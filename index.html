@@ -10,9 +10,22 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: Inter, sans-serif; background-color: #f3f4f6; }
+    /* Stile per le caratteristiche delle tariffe */
     .feature-list li { display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 14px; }
     /* Icona di controllo (Checkmark) */
     .icon-check { color: #0058e4; margin-right: 8px; min-width: 20px; }
+    /* Stile per le singole schede per forzare l'affiancamento */
+    .fare-card { width: 100%; max-width: 280px; } 
+
+    /* Media query per desktop: forziamo le schede a stare affiancate */
+    @media (min-width: 768px) {
+      #fare-grid {
+        display: flex;
+        justify-content: space-around;
+        gap: 16px;
+        flex-wrap: nowrap; /* Non scendere a capo su desktop */
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen">
@@ -26,22 +39,4 @@
     <nav class="flex items-center gap-6">
       <a href="index.html" class="hover:underline">Home</a>
       <a href="careers.html" class="hover:underline">Careers</a>
-      <a href="#" class="bg-yellow-400 text-black px-4 py-1 rounded-full font-semibold">Check-in</a>
-    </nav>
-  </header>
-
-  <main class="max-w-6xl mx-auto p-6 md:p-12">
-    <h1 class="text-lg font-semibold text-gray-700 mb-8 text-center border-b border-gray-300 pb-3">
-      La tariffa selezionata si applica a tutti i passeggeri per tutti i voli
-    </h1>
-
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-
-            <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 flex flex-col">
-                <div class="h-1 bg-yellow-400"></div> 
-        
-        <div class="p-4 text-center flex-grow">
-          <h2 class="text-xl font-bold text-gray-800">Economy</h2>
-          <p class="text-xs text-gray-500 mb-4">Viaggio leggero</p>
-          
-          <ul class="text-left text-
+      <a href="#" class="bg-yellow-40
