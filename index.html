@@ -36,4 +36,172 @@
 </head>
 <body class="min-h-screen">
 
-    <header class="bg-[#003580] text
+    <header class="bg-[#003580] text-white py-0 h-[100px] px-6 flex justify-between items-center shadow-lg">
+    <div class="flex items-center gap-4">
+      <a href="index.html"> 
+        <img src="vediamo ragazzi.png" alt="Main Logo" class="h-16 w-auto" style="height: 90px;" />
+      </a>
+    </div> 
+    <nav class="flex items-center gap-6">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="careers.html" class="hover:underline">Careers</a>
+      <a href="checkin.html" class="bg-yellow-400 text-black px-4 py-1 rounded-full font-semibold">Check-in</a>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto p-6 md:p-12">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+      Compare Our Fares
+    </h1>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-3 mb-10">
+        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="economy">
+          <p class="text-base font-bold">Economy</p>
+          <p class="text-xs text-gray-200">Light Travel</p>
+        </div>
+        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="family">
+          <p class="text-base font-bold">Family Plus</p>
+          <p class="text-xs text-gray-200">Ideal for Families</p>
+        </div>
+        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="plus">
+          <p class="text-base font-bold">Plus</p>
+          <p class="text-xs text-gray-200">Includes Bag & Seat</p>
+        </div>
+        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="flexi">
+          <p class="text-base font-bold">Flexi Plus</p>
+          <p class="text-xs text-gray-200">Maximum Flexibility</p>
+        </div>
+    </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-xl">
+      <h2 class="text-2xl font-bold text-gray-700 border-b pb-3 mb-6">
+        Fare Details for: <span id="fareTitle" class="text-[#0058e4]">Economy</span>
+      </h2>
+      <div id="fare-details-container" class="space-y-4">
+              </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <h3 class="text-xl font-semibold text-gray-700 mb-4">Ryanair PLC Group</h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://www.roblox.com/communities/1616809989/Aeritalia-ROBH/#/about" target="_blank" class="bg-[#0058e4] text-white py-3 px-6 rounded-lg font-bold shadow-md hover:bg-[#0047b3] transition duration-200">
+          Official Roblox Group
+        </a>
+        <a href="https://discord.gg/AGCYyP6tSZ" target="_blank" class="bg-gray-700 text-white py-3 px-6 rounded-lg font-bold shadow-md hover:bg-gray-800 transition duration-200">
+          Discord Server
+        </a>
+      </div>
+    </div>
+  </main>
+
+    <footer class="text-center text-gray-500 py-6 text-sm mt-12 bg-white shadow-inner">
+    <div class="flex items-center justify-center gap-2">
+      <img src="RYAAY-66486679.png" alt="Ryanair Logo" class="h-4 w-auto" style="height: 16px;" /> 
+      <span>© 2025 RyanairPlcGroup Roblox</span>
+    </div>
+  </footer>
+
+    <script>
+    // Fare Data and Features
+    const fareData = {
+      economy: {
+        name: "Economy",
+        price: "50 Robux",
+        features: [
+          { text: "1 Small Bag (under seat)", icon: 'check' },
+          { text: "Assigned Seat (Random Check-in)", icon: 'x' },
+          { text: "Cabin Bag (10kg)", icon: 'x' },
+          { text: "Free Airport Check-in", icon: 'x' }
+        ]
+      },
+      family: {
+        name: "Family Plus",
+        price: "150 Robux",
+        features: [
+          { text: "Priority & 2 Cabin Bags", icon: 'check' },
+          { text: "Reserved Seat (Standard)", icon: 'check' },
+          { text: "20kg Checked Bag", icon: 'check' },
+          { text: "Free Airport Check-in", icon: 'check' }
+        ]
+      },
+      plus: {
+        name: "Plus",
+        price: "50 Robux",
+        features: [
+          { text: "1 Small Bag", icon: 'check' },
+          { text: "Reserved Seat", icon: 'check' },
+          { text: "20kg Checked Bag", icon: 'check' },
+          { text: "Free Airport Check-in", icon: 'check' }
+        ]
+      },
+      flexi: {
+        name: "Flexi Plus",
+        price: "100 Robux",
+        features: [
+          { text: "No Flight Change Fee", icon: 'check' },
+          { text: "Priority & 2 Cabin Bags", icon: 'check' },
+          { text: "Reserved Seat of Choice", icon: 'check' },
+          { text: "Fast Track Security", icon: 'check' }
+        ]
+      }
+    };
+
+    const container = document.getElementById('fare-details-container');
+    const fareTitle = document.getElementById('fareTitle');
+    const fareCards = document.querySelectorAll('.fare-selector-card');
+
+    function renderFareDetails(fareKey) {
+      const fare = fareData[fareKey];
+      
+      container.innerHTML = '';
+      fareTitle.innerHTML = fare.name;
+
+      // Price header
+      container.innerHTML += `
+        <div class="fare-detail-item">
+          <p class="text-xl font-bold text-green-600">Cost: ${fare.price}</p>
+          <p class="text-sm text-gray-500">Price per flight</p>
+        </div>
+      `;
+
+      // Features list
+      fare.features.forEach(feature => {
+        const iconSVG = feature.icon === 'check' 
+          ? `<svg class="icon-check w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>`
+          : `<svg class="icon-x w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>`;
+
+        const featureHTML = `
+          <div class="fare-detail-item flex items-center">
+            ${iconSVG}
+            <p class="text-gray-900">${feature.text}</p>
+          </div>
+        `;
+        container.innerHTML += featureHTML;
+      });
+
+      // Update active card state
+      fareCards.forEach(card => {
+        card.classList.remove('bg-yellow-400', 'text-black');
+        card.classList.add('bg-[#0058e4]', 'text-white');
+        if (card.getAttribute('data-fare') === fareKey) {
+          card.classList.add('bg-yellow-400', 'text-black');
+          card.classList.remove('bg-[#0058e4]', 'text-white');
+        }
+      });
+    }
+
+    // Listener for fare cards
+    fareCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const fareKey = card.getAttribute('data-fare');
+        renderFareDetails(fareKey);
+      });
+    });
+
+    // Run function on load (Default: Economy)
+    document.querySelector('[data-fare="economy"]').click();
+
+  </script>
+
+</body>
+</html>
