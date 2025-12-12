@@ -3,160 +3,205 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ryanair - Check-in e Tariffe</title>
+  <title>Ryanair - Seleziona Tariffe</title>
   
     <link rel="icon" type="image/png" href="RYAAY-66486679.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: Inter, sans-serif; background-color: #f3f4f6; }
-    /* Stile per le caratteristiche delle tariffe */
-    .feature-list li { display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 14px; }
-    /* Icona di controllo (Checkmark) */
-    .icon-check { color: #0058e4; margin-right: 8px; min-width: 20px; }
-    /* Stile per le singole schede per forzare l'affiancamento */
-    .fare-card { width: 100%; max-width: 280px; } 
-
-    /* Media query per desktop: forziamo le schede a stare affiancate */
-    @media (min-width: 768px) {
-      #fare-grid {
-        display: flex;
-        justify-content: space-around;
-        gap: 16px;
-        flex-wrap: nowrap; /* Non scendere a capo su desktop */
-      }
+    
+    /* Stili per la selezione della tariffa (ex orario) */
+    .fare-selector-card { 
+      background-color: #0058e4; 
+      color: white;
+      transition: transform 0.2s, box-shadow 0.2s; 
     }
+    .fare-selector-card:hover { 
+      transform: translateY(-3px); 
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+    /* Stile per i dettagli della tariffa */
+    .fare-detail-item {
+      background-color: #ffffff;
+      border-left: 4px solid #0058e4;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .icon-check { color: #10B981; margin-right: 8px; min-width: 20px; }
+    .icon-x { color: #EF4444; margin-right: 8px; min-width: 20px; }
   </style>
 </head>
 <body class="min-h-screen">
 
-    <header class="bg-[#003580] text-white py-0 h-[100px] px-6 flex justify-between items-center shadow-lg border-b-4 border-yellow-400">
+    <header class="bg-[#003580] text-white py-0 h-[100px] px-6 flex justify-between items-center shadow-lg">
     <div class="flex items-center gap-4">
-      <a href="index.html"> 
-                <img src="vediamo ragazzi.png" alt="Logo Principale" class="h-16 w-auto" style="height: 90px;" />
+      <a href="index.html"> 
+        <img src="vediamo ragazzi.png" alt="Logo Principale" class="h-16 w-auto" style="height: 90px;" />
       </a>
-    </div> 
+    </div> 
     <nav class="flex items-center gap-6">
       <a href="index.html" class="hover:underline">Home</a>
       <a href="careers.html" class="hover:underline">Careers</a>
-      <a href="#" class="bg-yellow-400 text-black px-4 py-1 rounded-full font-semibold">Check-in</a>
+      <a href="checkin.html" class="bg-yellow-400 text-black px-4 py-1 rounded-full font-semibold">Check-in</a>
     </nav>
   </header>
 
-  <main class="max-w-6xl mx-auto p-6 md:p-12">
-    <h1 class="text-lg font-semibold text-gray-700 mb-8 text-center border-b border-gray-300 pb-3">
-      La tariffa selezionata si applica a tutti i passeggeri per tutti i voli
+  <main class="max-w-7xl mx-auto p-6 md:p-12">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+      Confronta le Nostre Tariffe
     </h1>
 
-        <div id="fare-grid" class="flex flex-wrap justify-center gap-4">
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-3 mb-10">
+        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="economy">
+          <p class="text-base font-bold">Economy</p>
+          <p class="text-xs text-gray-200">Viaggio leggero</p>
+        </div>
+        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="family">
+          <p class="text-base font-bold">Family Plus</p>
+          <p class="text-xs text-gray-200">Ideale per le famiglie</p>
+        </div>
+        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="plus">
+          <p class="text-base font-bold">Plus</p>
+          <p class="text-xs text-gray-200">Include Bagaglio e Posto</p>
+        </div>
+        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="flexi">
+          <p class="text-base font-bold">Flexi Plus</p>
+          <p class="text-xs text-gray-200">Massima flessibilità</p>
+        </div>
+    </div>
 
-            <div class="fare-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 flex flex-col">
-        <div class="h-1 bg-yellow-400"></div> 
-        <div class="p-4 text-center flex-grow">
-          <h2 class="text-xl font-bold text-gray-800">Economy</h2>
-          <p class="text-xs text-gray-500 mb-4">Viaggio leggero</p>
-          <ul class="text-left text-gray-600 feature-list mt-6">
-            <li>
-              <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M5.5 10a.5.5 0 01.5-.5h4a.5.5 0 010 1H6a.5.5 0 01-.5-.5z"></path></svg>
-              **1 Borsa Piccola** (Sotto il sedile)
-            </li>
-            <li>
-              <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM8.707 9.293a1 1 0 00-1.414 1.414L9.586 12l-2.293 2.293a1 1 0 001.414 1.414L11 13.414l2.293 2.293a1 1 0 001.414-1.414L12.414 12l2.293-2.293a1 1 0 00-1.414-1.414L11 10.586l-2.293-2.293z"></path></svg>
-              Nessun Posto Riservato
-            </li>
-          </ul>
-        </div>
-        <div class="mt-auto p-4 bg-gray-100 text-center">
-          <a href="#" class="block w-full py-2 border border-green-600 text-green-600 font-bold rounded-md hover:bg-gray-200 transition text-sm">
-            Continua per 50 Robux
-          </a>
-        </div>
+        <div class="bg-white p-6 rounded-lg shadow-xl">
+      <h2 class="text-2xl font-bold text-gray-700 border-b pb-3 mb-6">
+        Dettagli per la Tariffa: <span id="fareTitle" class="text-[#0058e4]">Economy</span>
+      </h2>
+      <div id="fare-details-container" class="space-y-4">
+              </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <h3 class="text-xl font-semibold text-gray-700 mb-4">Gruppo Ryanair PLC</h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://www.roblox.com/communities/1616809989/Aeritalia-ROBH/#/about" target="_blank" class="bg-[#0058e4] text-white py-3 px-6 rounded-lg font-bold shadow-md hover:bg-[#0047b3] transition duration-200">
+          Gruppo Roblox Ufficiale
+        </a>
+        <a href="https://discord.gg/AGCYyP6tSZ" target="_blank" class="bg-gray-700 text-white py-3 px-6 rounded-lg font-bold shadow-md hover:bg-gray-800 transition duration-200">
+          Server Discord
+        </a>
       </div>
-
-            <div class="fare-card bg-white rounded-lg shadow-xl overflow-hidden border border-[#0058e4] flex flex-col">
-        <div class="h-1 bg-[#0058e4]"></div> 
-        <div class="p-4 text-center bg-[#0058e4] text-white">
-          <h2 class="text-xl font-bold">Family Plus</h2>
-          <p class="text-xs">Ideale per le famiglie</p>
-        </div>
-        <div class="p-4 text-center flex-grow">
-          <ul class="text-left text-gray-600 feature-list">
-            <li>
-              <svg class="icon-check" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              Priorità & **2 Bagagli a Mano**
-            </li>
-            <li>
-              <svg class="icon-check" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              Posto Riservato
-            </li>
-            <li>
-              <svg class="icon-check" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              Fino a 20kg di Bagaglio da Stiva
-            </li>
-          </ul>
-        </div>
-        <div class="mt-auto p-4 bg-gray-100 text-center">
-          <a href="#" class="block w-full py-2 bg-[#0058e4] text-white font-bold rounded-md hover:bg-[#0047b3] transition text-sm">
-            150 Robux su ogni volo
-          </a>
-        </div>
-      </div>
-
-            <div class="fare-card bg-white rounded-lg shadow-md overflow-hidden border border-yellow-400 flex flex-col">
-        <div class="h-1 bg-yellow-400"></div> 
-        <div class="p-4 text-center bg-yellow-400">
-          <h2 class="text-xl font-bold text-gray-800">Plus</h2>
-          <p class="text-xs text-gray-800">Include Bagaglio e Posto</p>
-        </div>
-        <div class="p-4 text-center flex-grow">
-          <ul class="text-left text-gray-600 feature-list">
-            <li>1 Borsa Piccola</li>
-            <li>Posto Riservato</li>
-            <li>Bagaglio da Stiva 20kg</li>
-            <li>Check-in Gratuito in Aeroporto</li>
-          </ul>
-        </div>
-        <div class="mt-auto p-4 bg-gray-100 text-center">
-          <a href="#" class="block w-full py-2 bg-yellow-400 text-black font-bold rounded-md hover:bg-yellow-500 transition text-sm">
-            50 Robux su ogni volo
-          </a>
-        </div>
-      </div>
-
-            <div class="fare-card bg-white rounded-lg shadow-xl overflow-hidden border border-[#003580] relative flex flex-col">
-        <div class="h-1 bg-[#003580]"></div> 
-        <div class="p-4 text-center bg-[#003580] text-white">
-          <h2 class="text-xl font-bold">Flexi Plus</h2>
-          <p class="text-xs">Massima flessibilità</p>
-        </div>
-        <div class="p-4 text-center flex-grow">
-          <ul class="text-left text-gray-600 feature-list">
-            <li>
-              <svg class="icon-check" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              Nessun costo di cambio volo
-            </li>
-            <li class="font-bold mt-3 text-gray-800">Il nostro pacchetto include:</li>
-            <li>Priorità & 2 Bagagli a Mano</li>
-            <li>Posto Riservato a Scelta</li>
-            <li>Fast Track (Controllo Veloce)</li>
-          </ul>
-        </div>
-        <div class="mt-auto p-4 bg-gray-100 text-center">
-          <a href="#" class="block w-full py-2 bg-[#003580] text-white font-bold rounded-md hover:bg-blue-800 transition text-sm">
-            100 Robux su ogni volo
-          </a>
-        </div>
-      </div>
-
     </div>
   </main>
 
     <footer class="text-center text-gray-500 py-6 text-sm mt-12 bg-white shadow-inner">
     <div class="flex items-center justify-center gap-2">
-      <img src="RYAAY-66486679.png" alt="Ryanair Logo" class="h-4 w-auto" style="height: 16px;" /> 
+      <img src="RYAAY-66486679.png" alt="Ryanair Logo" class="h-4 w-auto" style="height: 16px;" /> 
       <span>© 2025 RyanairPlcGroup Roblox</span>
     </div>
   </footer>
+
+    <script>
+    // Dati e Caratteristiche delle Tariffe
+    const fareData = {
+      economy: {
+        name: "Economy",
+        price: "50 Robux",
+        features: [
+          { text: "1 Borsa Piccola (sotto il sedile)", icon: 'check' },
+          { text: "Posto Assegnato (Check-in casuale)", icon: 'x' },
+          { text: "Bagaglio a Mano (10kg)", icon: 'x' },
+          { text: "Check-in Gratuito in Aeroporto", icon: 'x' }
+        ]
+      },
+      family: {
+        name: "Family Plus",
+        price: "150 Robux",
+        features: [
+          { text: "Priorità & 2 Bagagli a Mano", icon: 'check' },
+          { text: "Posto Riservato (Standard)", icon: 'check' },
+          { text: "Bagaglio da Stiva 20kg", icon: 'check' },
+          { text: "Check-in Gratuito in Aeroporto", icon: 'check' }
+        ]
+      },
+      plus: {
+        name: "Plus",
+        price: "50 Robux",
+        features: [
+          { text: "1 Borsa Piccola", icon: 'check' },
+          { text: "Posto Riservato", icon: 'check' },
+          { text: "Bagaglio da Stiva 20kg", icon: 'check' },
+          { text: "Check-in Gratuito in Aeroporto", icon: 'check' }
+        ]
+      },
+      flexi: {
+        name: "Flexi Plus",
+        price: "100 Robux",
+        features: [
+          { text: "Nessun costo di cambio volo", icon: 'check' },
+          { text: "Priorità & 2 Bagagli a Mano", icon: 'check' },
+          { text: "Posto Riservato a Scelta", icon: 'check' },
+          { text: "Fast Track (Controllo Veloce)", icon: 'check' }
+        ]
+      }
+    };
+
+    const container = document.getElementById('fare-details-container');
+    const fareTitle = document.getElementById('fareTitle');
+    const fareCards = document.querySelectorAll('.fare-selector-card');
+
+    function renderFareDetails(fareKey) {
+      const fare = fareData[fareKey];
+      
+      container.innerHTML = '';
+      fareTitle.innerHTML = fare.name;
+
+      // Intestazione del prezzo
+      container.innerHTML += `
+        <div class="fare-detail-item">
+          <p class="text-xl font-bold text-green-600">Costo: ${fare.price}</p>
+          <p class="text-sm text-gray-500">Prezzo su ogni volo</p>
+        </div>
+      `;
+
+      // Lista delle caratteristiche
+      fare.features.forEach(feature => {
+        const iconSVG = feature.icon === 'check' 
+          ? `<svg class="icon-check w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>`
+          : `<svg class="icon-x w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>`;
+
+        const featureHTML = `
+          <div class="fare-detail-item flex items-center">
+            ${iconSVG}
+            <p class="text-gray-900">${feature.text}</p>
+          </div>
+        `;
+        container.innerHTML += featureHTML;
+      });
+
+      // Aggiorna lo stato attivo delle card
+      fareCards.forEach(card => {
+        card.classList.remove('bg-yellow-400', 'text-black');
+        card.classList.add('bg-[#0058e4]', 'text-white');
+        if (card.getAttribute('data-fare') === fareKey) {
+          card.classList.add('bg-yellow-400', 'text-black');
+          card.classList.remove('bg-[#0058e4]', 'text-white');
+        }
+      });
+    }
+
+    // Listener per le card tariffa
+    fareCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const fareKey = card.getAttribute('data-fare');
+        renderFareDetails(fareKey);
+      });
+    });
+
+    // Esegui la funzione all'apertura (Default: Economy)
+    document.querySelector('[data-fare="economy"]').click();
+
+  </script>
 
 </body>
 </html>
