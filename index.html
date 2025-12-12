@@ -3,34 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ryanair - Check-in e Tariffe</title>
+  <title>Ryanair - Orario Voli</title>
   
     <link rel="icon" type="image/png" href="RYAAY-66486679.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: Inter, sans-serif; background-color: #f3f4f6; }
-    /* Stile per le caratteristiche delle tariffe */
-    .feature-list li { display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 14px; }
-    /* Icona di controllo (Checkmark) */
-    .icon-check { color: #0058e4; margin-right: 8px; min-width: 20px; }
-    /* Stile per le singole schede per forzare l'affiancamento */
-    .fare-card { width: 100%; max-width: 280px; } 
-
-    /* Media query per desktop: forziamo le schede a stare affiancate */
-    @media (min-width: 768px) {
-      #fare-grid {
-        display: flex;
-        justify-content: space-around;
-        gap: 16px;
-        flex-wrap: nowrap; /* Non scendere a capo su desktop */
-      }
+    /* Stili per l'orario settimanale */
+    .flight-schedule-card { 
+      background-color: #0058e4; 
+      color: white;
+      transition: transform 0.2s, box-shadow 0.2s; 
+    }
+    .flight-schedule-card:hover { 
+      transform: translateY(-3px); 
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+    .flight-card {
+      background-color: #ffffff;
+      border-left: 4px solid #0058e4;
     }
   </style>
 </head>
 <body class="min-h-screen">
 
-    <header class="bg-[#003580] text-white py-0 h-[100px] px-6 flex justify-between items-center shadow-lg border-b-4 border-yellow-400">
+    <header class="bg-[#003580] text-white py-0 h-[100px] px-6 flex justify-between items-center shadow-lg">
     <div class="flex items-center gap-4">
       <a href="index.html"> 
                 <img src="vediamo ragazzi.png" alt="Logo Principale" class="h-16 w-auto" style="height: 90px;" />
@@ -39,4 +38,178 @@
     <nav class="flex items-center gap-6">
       <a href="index.html" class="hover:underline">Home</a>
       <a href="careers.html" class="hover:underline">Careers</a>
-      <a href="#" class="bg-yellow-40
+            <a href="checkin.html" class="bg-yellow-400 text-black px-4 py-1 rounded-full font-semibold">Check-in</a>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto p-6 md:p-12">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+      Orario Settimanale dei Voli
+    </h1>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 mb-10">
+            <div class="flight-schedule-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-day="1">
+        <p class="text-sm font-semibold">Lunedì</p>
+        <p class="text-xs text-gray-200">10/06</p>
+      </div>
+            <div class="flight-schedule-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-day="2">
+        <p class="text-sm font-semibold">Martedì</p>
+        <p class="text-xs text-gray-200">11/06</p>
+      </div>
+            <div class="flight-schedule-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-day="3">
+        <p class="text-sm font-semibold">Mercoledì</p>
+        <p class="text-xs text-gray-200">12/06</p>
+      </div>
+            <div class="flight-schedule-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-day="4">
+        <p class="text-sm font-semibold">Giovedì</p>
+        <p class="text-xs text-gray-200">13/06</p>
+      </div>
+            <div class="flight-schedule-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-day="5">
+        <p class="text-sm font-semibold">Venerdì</p>
+        <p class="text-xs text-gray-200">14/06</p>
+      </div>
+            <div class="flight-schedule-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-day="6">
+        <p class="text-sm font-semibold">Sabato</p>
+        <p class="text-xs text-gray-200">15/06</p>
+      </div>
+            <div class="flight-schedule-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-day="7">
+        <p class="text-sm font-semibold">Domenica</p>
+        <p class="text-xs text-gray-200">16/06</p>
+      </div>
+    </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-xl">
+      <h2 class="text-2xl font-bold text-gray-700 border-b pb-3 mb-6">
+        Voli per <span id="dayTitle" class="text-[#0058e4]">Oggi</span>
+      </h2>
+      <div id="flights-container" class="space-y-4">
+              </div>
+    </div>
+
+        <div class="mt-12 text-center">
+      <h3 class="text-xl font-semibold text-gray-700 mb-4">Gruppo Ryanair PLC</h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://www.roblox.com/communities/1616809989/Aeritalia-ROBH/#/about" target="_blank" class="bg-[#0058e4] text-white py-3 px-6 rounded-lg font-bold shadow-md hover:bg-[#0047b3] transition duration-200">
+          Gruppo Roblox Ufficiale
+        </a>
+        <a href="https://discord.gg/AGCYyP6tSZ" target="_blank" class="bg-gray-700 text-white py-3 px-6 rounded-lg font-bold shadow-md hover:bg-gray-800 transition duration-200">
+          Server Discord
+        </a>
+      </div>
+    </div>
+  </main>
+
+    <footer class="text-center text-gray-500 py-6 text-sm mt-12 bg-white shadow-inner">
+    <div class="flex items-center justify-center gap-2">
+      <img src="RYAAY-66486679.png" alt="Ryanair Logo" class="h-4 w-auto" style="height: 16px;" /> 
+      <span>© 2025 RyanairPlcGroup Roblox</span>
+    </div>
+  </footer>
+
+    <script>
+    // Definizione dei voli per giorno
+    const flightData = {
+      1: [ /* Lunedì */
+        { time: "09:00", origin: "Roma", destination: "Palermo", gate: "B12" },
+        { time: "11:30", origin: "Milano", destination: "Parigi", gate: "A05" },
+        { time: "15:45", origin: "Berlino", destination: "Dublino", gate: "C21" },
+      ],
+      2: [ /* Martedì */
+        { time: "10:15", origin: "Napoli", destination: "Londra", gate: "D03" },
+        { time: "14:00", origin: "Barcellona", destination: "Roma", gate: "B09" },
+      ],
+      3: [ /* Mercoledì */
+        { time: "07:30", origin: "Bologna", destination: "Madrid", gate: "A15" },
+        { time: "12:45", origin: "Palermo", destination: "Milano", gate: "C01" },
+        { time: "18:00", origin: "Roma", destination: "Venezia", gate: "B02" },
+      ],
+      4: [ /* Giovedì */
+        { time: "11:00", origin: "Milano", destination: "Napoli", gate: "D10" },
+        { time: "16:30", origin: "Londra", destination: "Berlino", gate: "A07" },
+      ],
+      5: [ /* Venerdì */
+        { time: "08:45", origin: "Parigi", destination: "Roma", gate: "B18" },
+        { time: "13:15", origin: "Madrid", destination: "Bologna", gate: "C05" },
+        { time: "19:00", origin: "Venezia", destination: "Dublino", gate: "D01" },
+      ],
+      6: [ /* Sabato */
+        { time: "10:30", origin: "Roma", destination: "Barcellona", gate: "A11" },
+        { time: "15:00", origin: "Dublino", destination: "Milano", gate: "C19" },
+      ],
+      7: [ /* Domenica */
+        { time: "09:30", origin: "Napoli", destination: "Roma", gate: "B06" },
+        { time: "17:15", origin: "Milano", destination: "Parigi", gate: "A04" },
+      ],
+      10: [ /* Giorno Default (Per la prima apertura) */
+        { time: "08:30", origin: "Amsterdam", destination: "Palermo", gate: "B10" },
+        { time: "14:50", origin: "Roma", destination: "Berlino", gate: "C14" },
+        { time: "20:00", origin: "Milano", destination: "Londra", gate: "A01" },
+      ]
+    };
+
+    const container = document.getElementById('flights-container');
+    const dayTitle = document.getElementById('dayTitle');
+    const dayCards = document.querySelectorAll('.flight-schedule-card');
+
+    function renderFlights(day) {
+      const flights = flightData[day] || flightData[10]; // Usa il giorno 10 come default se il giorno non esiste
+      
+      container.innerHTML = '';
+
+      if (flights.length === 0) {
+        container.innerHTML = '<p class="text-gray-500 text-center py-4">Nessun volo programmato per questo giorno.</p>';
+        return;
+      }
+
+      flights.forEach(flight => {
+        const flightHTML = `
+          <div class="flight-card p-4 rounded-lg shadow-sm flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+              <svg class="w-6 h-6 text-[#0058e4] hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+              <div>
+                <p class="text-lg font-bold text-gray-900">${flight.origin} → ${flight.destination}</p>
+                <p class="text-sm text-gray-500">Partenza: ${flight.time}</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-sm font-semibold text-gray-700">Gate: ${flight.gate}</p>
+              <p class="text-xs text-green-600 font-bold">In Orario</p>
+            </div>
+          </div>
+        `;
+        container.innerHTML += flightHTML;
+      });
+
+      // Aggiorna lo stato attivo delle card
+      dayCards.forEach(card => {
+        card.classList.remove('bg-yellow-400', 'text-black');
+        card.classList.add('bg-[#0058e4]', 'text-white');
+        if (parseInt(card.getAttribute('data-day')) === day) {
+          card.classList.add('bg-yellow-400', 'text-black');
+          card.classList.remove('bg-[#0058e4]', 'text-white');
+        }
+      });
+    }
+
+    // Listener per le card giorno
+    dayCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const day = parseInt(card.getAttribute('data-day'));
+        
+        // Aggiorna il titolo del giorno
+        const weekday = card.querySelector('.text-sm').innerHTML;
+        const date = card.querySelector('.text-xs').innerHTML;
+        dayTitle.innerHTML = `${weekday}, ${date}`;
+
+        renderFlights(day);
+      });
+    });
+
+    // Esegui la funzione all'apertura, usando il primo giorno della settimana come predefinito
+    // Clicca sul primo elemento per impostare Lunedì 10/06
+    document.querySelector('[data-day="1"]').click();
+
+  </script>
+
+</body>
+</html>
