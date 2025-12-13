@@ -3,208 +3,124 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ryanair - Select Fares</title>
+  <title>Ryanair PLC Group - Official Site</title>
   
     <link rel="icon" type="image/png" href="RYAAY-66486679.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: Inter, sans-serif; background-color: #f3f4f6; }
-    
-    /* Styles for fare selector */
-    .fare-selector-card { 
-      background-color: #0058e4; 
-      color: white;
-      transition: transform 0.2s, box-shadow 0.2s; 
+    /* Stili Generali */
+    body { font-family: Inter, sans-serif; background-color: #f0f3f5; }
+
+    /* HERO Section: Usa un colore solido o una tua immagine */
+    .hero-section {
+      background-color: #003580; /* Blu scuro principale */
+      background-size: cover;
+      background-position: center;
+      /* Rimuovi la riga seguente se aggiungi un'immagine di sfondo con CSS */
+      min-height: 400px;
     }
-    .fare-selector-card:hover { 
-      transform: translateY(-3px); 
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
+
+    /* Stile per le card dei servizi */
+    .service-card {
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      border-left: 5px solid #ffcc00; /* Giallo Ryanair */
     }
-    /* Style for fare details */
-    .fare-detail-item {
-      background-color: #ffffff;
-      border-left: 4px solid #0058e4;
-      padding: 16px;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 53, 128, 0.15); /* Ombra Blu Scuro */
     }
-    .icon-check { color: #10B981; margin-right: 8px; min-width: 20px; }
-    .icon-x { color: #EF4444; margin-right: 8px; min-width: 20px; }
   </style>
 </head>
 <body class="min-h-screen">
 
-    <header class="bg-[#003580] text-white py-0 h-[100px] px-6 flex justify-between items-center shadow-lg">
+    <header class="bg-[#003580] text-white py-0 h-[100px] px-6 flex justify-between items-center shadow-lg sticky top-0 z-50">
     <div class="flex items-center gap-4">
       <a href="index.html"> 
-        <img src="ryanair logo.png" class="h-16 w-auto" style="height: 90px;" />
+        <img src="vediamo ragazzi.png" alt="Main Logo" class="h-16 w-auto" style="height: 90px;" />
       </a>
     </div> 
-    <nav class="flex items-center gap-6">
-      <a href="index.html" class="hover:underline">Home</a>
-      <a href="careers.html" class="hover:underline">Careers</a>
-      <a href="checkin.html" class="bg-yellow-400 text-black px-4 py-1 rounded-full font-semibold">Check-in</a>
+    <nav class="flex items-center gap-6 text-lg font-medium">
+      <a href="index.html" class="border-b-2 border-yellow-400 pb-1">Home</a>
+      <a href="careers.html" class="hover:border-b-2 hover:border-yellow-400 pb-1">Careers</a>
+      <a href="checkin.html" class="bg-yellow-400 text-black px-5 py-2 rounded-full font-bold hover:bg-yellow-500 transition duration-200">Check-in</a>
     </nav>
   </header>
 
-  <main class="max-w-7xl mx-auto p-6 md:p-12">
-    <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-      Compare Our Fares
-    </h1>
-
-        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-3 mb-10">
-        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="economy">
-          <p class="text-base font-bold">Economy</p>
-          <p class="text-xs text-gray-200">Light Travel</p>
-        </div>
-        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="family">
-          <p class="text-base font-bold">Family Plus</p>
-          <p class="text-xs text-gray-200">Ideal for Families</p>
-        </div>
-        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="plus">
-          <p class="text-base font-bold">Plus</p>
-          <p class="text-xs text-gray-200">Includes Bag & Seat</p>
-        </div>
-        <div class="fare-selector-card p-3 rounded-lg text-center shadow-md cursor-pointer" data-fare="flexi">
-          <p class="text-base font-bold">Flexi Plus</p>
-          <p class="text-xs text-gray-200">Maximum Flexibility</p>
-        </div>
+    <div class="hero-section text-white flex items-center justify-center p-12 shadow-inner border-b-4 border-yellow-400">
+    <div class="text-center max-w-4xl">
+      <h1 class="text-5xl font-extrabold mb-3 tracking-tight">
+        Fly Higher with Ryanair PLC
+      </h1>
+      <p class="text-xl opacity-90 mb-8">
+        Your destination for seamless travel and exciting careers in the Roblox aviation world.
+      </p>
+      <a href="checkin.html" class="bg-yellow-400 text-black px-8 py-3 rounded-lg text-xl font-bold shadow-2xl hover:bg-yellow-500 transition duration-300">
+        Check-in Now
+      </a>
     </div>
+  </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-xl">
-      <h2 class="text-2xl font-bold text-gray-700 border-b pb-3 mb-6">
-        Fare Details for: <span id="fareTitle" class="text-[#0058e4]">Economy</span>
+  <main class="max-w-7xl mx-auto p-6 md:p-12 -mt-16 relative z-10">
+
+        <div class="bg-white p-8 rounded-xl shadow-2xl mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-3">
+        ✈️ Compare Our Fares
       </h2>
-      <div id="fare-details-container" class="space-y-4">
-              </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#details-economy" class="service-card bg-white p-5 rounded-lg shadow-md hover:shadow-xl text-center block">
+          <p class="text-2xl font-bold text-[#003580]">Economy</p>
+          <p class="text-sm text-gray-500 mt-1">Starting from 50 Robux</p>
+        </a>
+                <a href="#details-family" class="service-card bg-white p-5 rounded-lg shadow-md hover:shadow-xl text-center block border-left-4 border-[#0058e4]">
+          <p class="text-2xl font-bold text-[#0058e4]">Family Plus</p>
+          <p class="text-sm text-gray-500 mt-1">Best value for groups</p>
+        </a>
+                <a href="#details-plus" class="service-card bg-white p-5 rounded-lg shadow-md hover:shadow-xl text-center block border-left-4 border-yellow-400">
+          <div class="flex items-center justify-center gap-2">
+            <p class="text-2xl font-bold text-gray-800">Plus</p>
+            <span class="bg-yellow-400 text-xs font-bold px-2 py-0.5 rounded-full text-black">TOP</span>
+          </div>
+          <p class="text-sm text-gray-500 mt-1">Bag & Seat included</p>
+        </a>
+                <a href="#details-flexi" class="service-card bg-white p-5 rounded-lg shadow-md hover:shadow-xl text-center block border-left-4 border-[#003580]">
+          <p class="text-2xl font-bold text-[#003580]">Flexi Plus</p>
+          <p class="text-sm text-gray-500 mt-1">Maximum flexibility</p>
+        </a>
+      </div>
     </div>
 
-    <div class="mt-12 text-center">
-      <h3 class="text-xl font-semibold text-gray-700 mb-4">Ryanair PLC Group</h3>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="https://www.roblox.com/communities/1616809989/Aeritalia-ROBH/#/about" target="_blank" class="bg-[#0058e4] text-white py-3 px-6 rounded-lg font-bold shadow-md hover:bg-[#0047b3] transition duration-200">
-          Official Roblox Group
+        <div class="grid md:grid-cols-2 gap-10 p-4">
+      <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-[#0058e4]">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Join Our Team</h3>
+        <p class="text-gray-600 mb-6">
+          Explore exciting career opportunities in Roblox aviation. We are always looking for pilots, cabin crew, and ground staff.
+        </p>
+        <a href="careers.html" class="text-lg font-semibold text-[#0058e4] hover:text-blue-700 transition">
+          View Careers →
         </a>
-        <a href="https://discord.gg/AGCYyP6tSZ" target="_blank" class="bg-gray-700 text-white py-3 px-6 rounded-lg font-bold shadow-md hover:bg-gray-800 transition duration-200">
-          Discord Server
-        </a>
+      </div>
+
+      <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-yellow-400">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Official Roblox Links</h3>
+        <div class="space-y-3">
+          <a href="https://www.roblox.com/communities/1616809989/Aeritalia-ROBH/#/about" target="_blank" class="block bg-gray-100 p-3 rounded-lg hover:bg-gray-200 transition text-gray-700">
+            🌐 Official Roblox Group
+          </a>
+          <a href="https://discord.gg/AGCYyP6tSZ" target="_blank" class="block bg-gray-100 p-3 rounded-lg hover:bg-gray-200 transition text-gray-700">
+            💬 Discord Server
+          </a>
+        </div>
       </div>
     </div>
   </main>
 
-    <footer class="text-center text-gray-500 py-6 text-sm mt-12 bg-white shadow-inner">
+    <footer class="text-center text-gray-500 py-6 text-sm mt-12 bg-white shadow-inner border-t border-gray-200">
     <div class="flex items-center justify-center gap-2">
-      <img src="RYAAY-66486679.png"class="h-4 w-auto" style="height: 16px;" /> 
-      <span>© 2025 RyanairPlcGroup Roblox</span>
+      <img src="RYAAY-66486679.png" alt="Ryanair Logo" class="h-4 w-auto" style="height: 16px;" /> 
+      <span>© 2025 RyanairPlcGroup Roblox. All rights reserved.</span>
     </div>
   </footer>
 
-    <script>
-    // Fare Data and Features
-    const fareData = {
-      economy: {
-        name: "Economy",
-        price: "0 Robux",
-        features: [
-          { text: "1 Small Bag (under seat)", icon: 'check' },
-          { text: "Assigned Seat (Random Check-in)", icon: 'x' },
-          { text: "Cabin Bag (10kg)", icon: 'x' },
-          { text: "Free Airport Check-in", icon: 'x' }
-        ]
-      },
-      family: {
-        name: "Family Plus",
-        price: "150 Robux",
-        features: [
-          { text: "Priority & 2 Cabin Bags", icon: 'check' },
-          { text: "Reserved Seat (Standard)", icon: 'check' },
-          { text: "20kg Checked Bag", icon: 'check' },
-          { text: "Free Airport Check-in", icon: 'check' }
-        ]
-      },
-      plus: {
-        name: "Plus",
-        price: "50 Robux",
-        features: [
-          { text: "1 Small Bag", icon: 'check' },
-          { text: "Reserved Seat", icon: 'check' },
-          { text: "20kg Checked Bag", icon: 'check' },
-          { text: "Free Airport Check-in", icon: 'check' }
-        ]
-      },
-      flexi: {
-        name: "Flexi Plus",
-        price: "100 Robux",
-        features: [
-          { text: "No Flight Change Fee", icon: 'check' },
-          { text: "Priority & 2 Cabin Bags", icon: 'check' },
-          { text: "Reserved Seat of Choice", icon: 'check' },
-          { text: "Fast Track Security", icon: 'check' }
-        ]
-      }
-    };
-
-    const container = document.getElementById('fare-details-container');
-    const fareTitle = document.getElementById('fareTitle');
-    const fareCards = document.querySelectorAll('.fare-selector-card');
-
-    function renderFareDetails(fareKey) {
-      const fare = fareData[fareKey];
-      
-      container.innerHTML = '';
-      fareTitle.innerHTML = fare.name;
-
-      // Price header
-      container.innerHTML += `
-        <div class="fare-detail-item">
-          <p class="text-xl font-bold text-green-600">Cost: ${fare.price}</p>
-          <p class="text-sm text-gray-500">Price per flight</p>
-        </div>
-      `;
-
-      // Features list
-      fare.features.forEach(feature => {
-        const iconSVG = feature.icon === 'check' 
-          ? `<svg class="icon-check w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>`
-          : `<svg class="icon-x w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>`;
-
-        const featureHTML = `
-          <div class="fare-detail-item flex items-center">
-            ${iconSVG}
-            <p class="text-gray-900">${feature.text}</p>
-          </div>
-        `;
-        container.innerHTML += featureHTML;
-      });
-
-      // Update active card state
-      fareCards.forEach(card => {
-        card.classList.remove('bg-yellow-400', 'text-black');
-        card.classList.add('bg-[#0058e4]', 'text-white');
-        if (card.getAttribute('data-fare') === fareKey) {
-          card.classList.add('bg-yellow-400', 'text-black');
-          card.classList.remove('bg-[#0058e4]', 'text-white');
-        }
-      });
-    }
-
-    // Listener for fare cards
-    fareCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const fareKey = card.getAttribute('data-fare');
-        renderFareDetails(fareKey);
-      });
-    });
-
-    // Run function on load (Default: Economy)
-    document.querySelector('[data-fare="economy"]').click();
-
-  </script>
-
 </body>
 </html>
-
-
-
